@@ -7,7 +7,6 @@ class CircularReferenceDetector
 
   def circular? node, visited=[]
     return true if visited.include? node
-    node.extend SmartNil
 
     *next_nodes = @block.call(node)
     visited += [node]
@@ -16,9 +15,4 @@ class CircularReferenceDetector
       circular? next_node, visited
     end
   end
-end
-
-
-module SmartNil
-  def method_missing(*args); end
 end
