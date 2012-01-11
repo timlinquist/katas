@@ -23,12 +23,12 @@ class MusicFun
     value = music.fetch(key, nil)
 
     case value
-    when String
-      return value
     when Hash, MusicFun, Array
       return self.class.new(value)
+    when nil?
+      return super(method_id, args, &block)
     else
-      super(method_id, args, &block)
+      value
     end
   end
 end
