@@ -1,8 +1,8 @@
-require './music_fun'
 require 'yaml'
+require_relative 'music_fun'
 
 describe MusicFun do
-  let(:music){ YAML::load(File.read('./music.yaml')) }
+  let(:music){ YAML::load(File.read(File.dirname(__FILE__) + '/music.yaml')) }
   let(:data){ MusicFun.new music }
 
   it "has music" do
